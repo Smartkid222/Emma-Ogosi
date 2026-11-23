@@ -1,0 +1,1293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Emma Ogois | Official Website</title>
+    <meta
+      name="description"
+      content="Official website of Emma Ogois: music, gallery, videos, news, events and booking."
+    />
+    <meta property="og:title" content="Emma Ogois | Official Website" />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#160D09" />
+    <style>
+      :root {
+        --deep: #28160f;
+        --esp: #3b2117;
+        --black: #160d09;
+        --gold: #c6a477;
+        --ivory: #e8d7bd;
+        --beige: #a9957d;
+        --serif:
+          "Cormorant Garamond", "Playfair Display", Georgia, "Times New Roman",
+          serif;
+        --sans: "Helvetica Neue", Arial, system-ui, sans-serif;
+        --line: 1px solid rgba(198, 164, 119, 0.45);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+      body {
+        background: linear-gradient(180deg, var(--deep), var(--black));
+        color: var(--ivory);
+        font: 1rem/1.8 var(--sans);
+        overflow-x: hidden;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      :focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 3px;
+      }
+      .skip {
+        position: absolute;
+        left: -999px;
+      }
+      .skip:focus {
+        left: 1rem;
+        top: 1rem;
+        background: var(--gold);
+        color: var(--black);
+        padding: 0.5rem 1rem;
+        z-index: 99;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: var(--serif);
+        font-weight: 500;
+        color: var(--gold);
+        line-height: 1.1;
+      }
+      h1 {
+        font-size: clamp(3.5rem, 10vw, 8rem);
+        letter-spacing: 0.02em;
+      }
+      h1 em {
+        color: var(--ivory);
+      }
+      h2 {
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      h2::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 1px;
+        background: var(--gold);
+        margin: 1rem auto 0;
+      }
+      h3 {
+        font-size: 1.5rem;
+      }
+      .eyebrow {
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        color: var(--beige);
+      }
+      .tagline {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: 1.5rem;
+        color: var(--beige);
+        margin: 1.5rem 0 2rem;
+      }
+
+      /* Nav */
+      .nav {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 50;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 5vw;
+        transition: 0.4s;
+      }
+      .nav.stuck {
+        background: rgba(22, 13, 9, 0.92);
+        backdrop-filter: blur(8px);
+        border-bottom: var(--line);
+        padding-block: 0.7rem;
+      }
+      .brand {
+        font-family: var(--serif);
+        font-size: 1.6rem;
+        color: var(--gold);
+      }
+      #menu {
+        display: flex;
+        gap: 1.8rem;
+      }
+      #menu a {
+        font-size: 0.8rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--beige);
+        padding-bottom: 4px;
+        border-bottom: 1px solid transparent;
+        transition: 0.3s;
+      }
+      #menu a:hover,
+      #menu a.active {
+        color: var(--gold);
+        border-color: var(--gold);
+      }
+      .burger {
+        display: none;
+        background: none;
+        border: 0;
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+      }
+      .burger span {
+        display: block;
+        height: 1px;
+        background: var(--gold);
+        margin: 8px 0;
+        transition: 0.3s;
+      }
+      .burger[aria-expanded="true"] span:first-child {
+        transform: translateY(4.5px) rotate(45deg);
+      }
+      .burger[aria-expanded="true"] span:last-child {
+        transform: translateY(-4.5px) rotate(-45deg);
+      }
+
+      /* Layout */
+      .hero {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: 4vw;
+        padding: 7rem 7vw 4rem;
+        background: radial-gradient(
+          circle at 75% 40%,
+          var(--esp),
+          transparent 60%
+        );
+      }
+      .sec {
+        padding: 6rem 7vw;
+      }
+      .alt {
+        background: rgba(59, 33, 23, 0.45);
+      }
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        max-width: 1100px;
+        margin: auto;
+      }
+      .split p {
+        margin-bottom: 1rem;
+        color: var(--ivory);
+      }
+      .frame {
+        position: relative;
+      }
+      .frame::before {
+        content: "";
+        position: absolute;
+        inset: -14px 14px 14px -14px;
+        border: var(--line);
+        z-index: 0;
+      }
+      .frame img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+      }
+      img[data-ph] {
+        background: linear-gradient(135deg, var(--esp), var(--black));
+        aspect-ratio: 4/5;
+        object-fit: cover;
+      }
+      .facts {
+        list-style: none;
+        margin-top: 1.5rem;
+      }
+      .facts li {
+        border-top: var(--line);
+        padding: 0.6rem 0;
+        color: var(--beige);
+      }
+      .facts b {
+        color: var(--gold);
+        font-weight: 400;
+        margin-right: 1rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+      }
+
+      .btn {
+        display: inline-block;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        background: none;
+        padding: 0.9rem 2.4rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: 0.35s;
+      }
+      .btn:hover {
+        background: var(--gold);
+        color: var(--black);
+      }
+      .btn.sm {
+        padding: 0.5rem 1.2rem;
+      }
+      .link {
+        color: var(--gold);
+        border-bottom: 1px solid transparent;
+        font-size: 0.9rem;
+      }
+      .link:hover {
+        border-color: var(--gold);
+      }
+
+      /* Music */
+      .albums,
+      .cards,
+      .vids {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 2rem;
+        max-width: 1100px;
+        margin: auto;
+      }
+      .album img {
+        aspect-ratio: 1;
+        margin-bottom: 1rem;
+        border: var(--line);
+        transition: 0.5s;
+      }
+      .album:hover img {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+      .album p {
+        color: var(--beige);
+      }
+      .player {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        max-width: 700px;
+        margin: 3rem auto 0;
+        padding: 1rem 1.5rem;
+        border: var(--line);
+        background: var(--black);
+      }
+      .player button {
+        background: none;
+        border: var(--line);
+        color: var(--gold);
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .player button:hover {
+        background: var(--gold);
+        color: var(--black);
+      }
+      .pinfo {
+        flex: 1;
+        min-width: 0;
+      }
+      .pinfo input {
+        width: 100%;
+        accent-color: var(--gold);
+      }
+      #ptime {
+        font-size: 0.8rem;
+        color: var(--beige);
+      }
+
+      /* Gallery */
+      .grid {
+        columns: 3 220px;
+        column-gap: 1rem;
+        max-width: 1100px;
+        margin: auto;
+      }
+      .grid button {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+        padding: 0;
+        border: var(--line);
+        background: none;
+        cursor: pointer;
+        overflow: hidden;
+      }
+      .grid img {
+        width: 100%;
+        transition:
+          transform 0.6s,
+          filter 0.6s;
+        filter: saturate(0.85);
+      }
+      .grid button:hover img {
+        transform: scale(1.06);
+        filter: none;
+      }
+      .lb {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: rgba(22, 13, 9, 0.96);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      .lb[hidden] {
+        display: none;
+      }
+      .lb figure {
+        max-width: 80vw;
+        text-align: center;
+      }
+      .lb img {
+        max-height: 75vh;
+        margin: auto;
+        border: var(--line);
+        aspect-ratio: auto;
+      }
+      .lb figcaption {
+        color: var(--beige);
+        margin-top: 1rem;
+      }
+      .lb button {
+        background: none;
+        border: 0;
+        color: var(--gold);
+        font-size: 2rem;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+      .lb .x {
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        font-size: 2.5rem;
+      }
+
+      /* Timeline */
+      .timeline {
+        list-style: none;
+        max-width: 700px;
+        margin: auto;
+        border-left: var(--line);
+        padding-left: 2rem;
+      }
+      .timeline li {
+        position: relative;
+        margin-bottom: 1.5rem;
+      }
+      .timeline li::before {
+        content: "";
+        position: absolute;
+        left: -2.4rem;
+        top: 0.6rem;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+      .timeline button {
+        background: none;
+        border: 0;
+        color: var(--ivory);
+        font: 1.4rem var(--serif);
+        cursor: pointer;
+        text-align: left;
+      }
+      .timeline span {
+        color: var(--gold);
+        margin-right: 1rem;
+        letter-spacing: 0.15em;
+      }
+      .timeline p {
+        max-height: 0;
+        overflow: hidden;
+        color: var(--beige);
+        transition: max-height 0.5s;
+      }
+      .timeline li.open p {
+        max-height: 200px;
+      }
+
+      /* Videos, news, events */
+      .vid {
+        aspect-ratio: 16/9;
+        border: var(--line);
+        background: linear-gradient(135deg, var(--esp), var(--black));
+      }
+      .vid button {
+        width: 100%;
+        height: 100%;
+        background: none;
+        border: 0;
+        color: var(--gold);
+        font: 1.3rem var(--serif);
+        cursor: pointer;
+      }
+      .vid iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .card {
+        border: var(--line);
+        padding: 2rem;
+        transition: 0.4s;
+        background: rgba(22, 13, 9, 0.5);
+      }
+      .card:hover {
+        transform: translateY(-6px);
+        border-color: var(--gold);
+      }
+      time {
+        color: var(--gold);
+        letter-spacing: 0.15em;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+      }
+      .events {
+        list-style: none;
+        max-width: 900px;
+        margin: auto;
+      }
+      .events li {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        padding: 1.5rem 0;
+        border-bottom: var(--line);
+      }
+      .events li div {
+        flex: 1;
+      }
+      .events p {
+        color: var(--beige);
+      }
+      .events .past {
+        opacity: 0.55;
+      }
+
+      /* Form */
+      form label {
+        display: block;
+        margin-bottom: 1.2rem;
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      form input,
+      form textarea {
+        width: 100%;
+        margin-top: 0.4rem;
+        padding: 0.8rem;
+        background: var(--black);
+        border: var(--line);
+        color: var(--ivory);
+        font: 1rem var(--sans);
+      }
+      form small {
+        display: block;
+        color: var(--beige);
+        min-height: 1.2em;
+        text-transform: none;
+        letter-spacing: 0;
+      }
+      .social {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+      .social a {
+        color: var(--gold);
+        border-bottom: 1px solid transparent;
+      }
+      .social a:hover {
+        border-color: var(--gold);
+      }
+      #status {
+        margin-top: 1rem;
+        color: var(--gold);
+      }
+
+      footer {
+        text-align: center;
+        padding: 4rem 7vw 2rem;
+        border-top: var(--line);
+        display: grid;
+        gap: 1.2rem;
+        justify-items: center;
+        color: var(--beige);
+        font-size: 0.85rem;
+      }
+      footer nav {
+        display: flex;
+        gap: 1.5rem;
+      }
+      #top {
+        position: fixed;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: var(--line);
+        background: var(--black);
+        color: var(--gold);
+        cursor: pointer;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.4s;
+        z-index: 40;
+      }
+      #top.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Reveal */
+      .js .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.9s,
+          transform 0.9s;
+      }
+      .js .reveal.in {
+        opacity: 1;
+        transform: none;
+      }
+
+      @media (max-width: 860px) {
+        .burger {
+          display: block;
+        }
+        #menu {
+          position: fixed;
+          inset: 0 0 0 30%;
+          background: var(--black);
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          transform: translateX(100%);
+          transition: 0.4s;
+          border-left: var(--line);
+        }
+        #menu.open {
+          transform: none;
+        }
+        .hero,
+        .split {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          text-align: center;
+          padding-top: 6rem;
+        }
+        .hero-img {
+          order: -1;
+          max-width: 320px;
+          margin: 0 auto;
+        }
+        .sec {
+          padding: 4rem 6vw;
+        }
+        .events li {
+          flex-wrap: wrap;
+          gap: 0.8rem;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          animation: none !important;
+          scroll-behavior: auto !important;
+        }
+        .js .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      .lead {
+        text-align: center;
+        max-width: 640px;
+        margin: -1.5rem auto 3rem;
+        color: var(--beige);
+        font-family: var(--serif);
+        font-size: 1.3rem;
+        font-style: italic;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header id="nav" class="nav">
+      <a href="#home" class="brand">Emma Ogois</a>
+      <button
+        class="burger"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="menu"
+      >
+        <span></span><span></span>
+      </button>
+      <nav id="menu" aria-label="Main">
+        <a href="#about">About</a><a href="#music">Music</a
+        ><a href="#gallery">Gallery</a> <a href="#journey">Journey</a
+        ><a href="#videos">Videos</a><a href="#news">News</a>
+        <a href="#events">Events</a><a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section id="home" class="hero">
+        <div class="hero-text">
+          <p class="eyebrow reveal">The Official Website</p>
+          <h1 class="reveal">EMMA<br /><em>OGOIS</em></h1>
+          <p class="tagline reveal">Legendary Artist. Musical Pioneer.</p>
+          <a href="#about" class="btn reveal">Explore</a>
+        </div>
+        <figure class="hero-img frame reveal">
+          <img
+            data-ph="Portrait"
+            alt="Placeholder: professional portrait of the artist"
+            width="800"
+            height="1000"
+          />
+        </figure>
+      </section>
+
+      <section id="about" class="sec">
+        <h2 class="reveal">About</h2>
+        <div class="split">
+          <figure class="frame reveal">
+            <img
+              data-ph="Photo"
+              alt="Placeholder: artist photograph"
+              loading="lazy"
+              width="600"
+              height="750"
+            />
+          </figure>
+          <div class="reveal">
+            <p>
+              Some voices need no introduction, yet every voice has a beginning.
+              This is the story of [Emma Ogois]: a musician shaped by [early
+              influences], guided by a love of melody, and defined by a sound
+              that is unmistakably their own.
+            </p>
+            <p>
+              From intimate rooms to grand stages, the music has always been
+              about connection. Add the artist's real milestones, collaborations
+              and recognition here, in their own words.
+            </p>
+            <ul class="facts">
+              <li><b>Genre</b> Placeholder</li>
+              <li><b>Origin</b> Placeholder</li>
+              <li><b>Active since</b> Placeholder</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="music" class="sec alt">
+        <h2 class="reveal">Music</h2>
+        <p class="lead reveal">
+          Every record is a chapter. Explore the albums and singles that shape
+          the sound, and listen on your favourite platform.
+        </p>
+        <div class="albums">
+          <article class="album reveal">
+            <img
+              data-ph="Album"
+              alt="Placeholder album artwork"
+              loading="lazy"
+              width="400"
+              height="400"
+            />
+            <h3>Album Title</h3>
+            <p>Year</p>
+            <a href="#" class="link">Listen on streaming platform</a>
+          </article>
+          <article class="album reveal">
+            <img
+              data-ph="Single"
+              alt="Placeholder single artwork"
+              loading="lazy"
+              width="400"
+              height="400"
+            />
+            <h3>Single Title</h3>
+            <p>Year</p>
+            <a href="#" class="link">Listen on streaming platform</a>
+          </article>
+          <article class="album reveal">
+            <img
+              data-ph="Album"
+              alt="Placeholder album artwork"
+              loading="lazy"
+              width="400"
+              height="400"
+            />
+            <h3>Album Title</h3>
+            <p>Year</p>
+            <a href="#" class="link">Listen on streaming platform</a>
+          </article>
+        </div>
+        <!-- Add audio: put files in the TRACKS array in script.js -->
+        <div class="player reveal" id="player" aria-label="Audio player">
+          <button id="prev" aria-label="Previous track">&#9198;</button>
+          <button id="play" aria-label="Play">&#9654;</button>
+          <button id="next" aria-label="Next track">&#9197;</button>
+          <div class="pinfo">
+            <strong id="ptitle">No audio supplied</strong>
+            <input
+              id="seek"
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+              aria-label="Seek"
+            />
+          </div>
+          <span id="ptime">0:00</span>
+          <audio id="audio" preload="none"></audio>
+        </div>
+      </section>
+
+      <section id="gallery" class="sec">
+        <h2 class="reveal">Gallery</h2>
+        <p class="lead reveal">
+          Portraits, stage lights and quiet moments backstage: a visual archive
+          of the artist's world. Select any image to view it full screen.
+        </p>
+        <div class="grid" id="grid">
+          <button class="reveal" data-cap="Portrait">
+            <img
+              data-ph="Portrait"
+              alt="Placeholder portrait"
+              loading="lazy"
+              width="400"
+              height="500"
+            />
+          </button>
+          <button class="reveal" data-cap="Performance">
+            <img
+              data-ph="Performance"
+              alt="Placeholder live performance"
+              loading="lazy"
+              width="400"
+              height="400"
+            />
+          </button>
+          <button class="reveal" data-cap="Behind the scenes">
+            <img
+              data-ph="Backstage"
+              alt="Placeholder behind-the-scenes photo"
+              loading="lazy"
+              width="400"
+              height="500"
+            />
+          </button>
+          <button class="reveal" data-cap="Event">
+            <img
+              data-ph="Event"
+              alt="Placeholder event photo"
+              loading="lazy"
+              width="400"
+              height="400"
+            />
+          </button>
+          <button class="reveal" data-cap="Performance">
+            <img
+              data-ph="Performance"
+              alt="Placeholder live performance"
+              loading="lazy"
+              width="400"
+              height="500"
+            />
+          </button>
+          <button class="reveal" data-cap="Portrait">
+            <img
+              data-ph="Portrait"
+              alt="Placeholder portrait"
+              loading="lazy"
+              width="400"
+              height="400"
+            />
+          </button>
+        </div>
+      </section>
+
+      <section id="journey" class="sec alt">
+        <h2 class="reveal">Musical Journey</h2>
+        <p class="lead reveal">
+          A career is built one moment at a time. Select a milestone to read the
+          story behind it.
+        </p>
+        <ol class="timeline">
+          <li class="reveal">
+            <button aria-expanded="false">
+              <span>[Year]</span> The First Notes
+            </button>
+            <p>
+              Where it all began: the first song, the first audience, the spark
+              that set everything in motion. Add the real story here.
+            </p>
+          </li>
+          <li class="reveal">
+            <button aria-expanded="false">
+              <span>[Year]</span> Finding a Voice
+            </button>
+            <p>
+              The years of growth and experimentation when the artist's
+              signature sound took shape. Add the real story here.
+            </p>
+          </li>
+          <li class="reveal">
+            <button aria-expanded="false">
+              <span>[Year]</span> A Defining Moment
+            </button>
+            <p>
+              A release, a performance or a collaboration that changed the
+              course of the journey. Add the real story here.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <section id="videos" class="sec">
+        <h2 class="reveal">Videos &amp; Performances</h2>
+        <p class="lead reveal">
+          Live performances, interviews and visual stories. Press play and
+          experience the music as it was meant to be seen.
+        </p>
+        <div class="vids">
+          <!-- Replace data-yt with a YouTube video ID -->
+          <div class="vid reveal" data-yt="" data-title="Live performance">
+            <button aria-label="Load video">&#9654; Live performance</button>
+          </div>
+          <div class="vid reveal" data-yt="" data-title="Interview">
+            <button aria-label="Load video">&#9654; Interview</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="news" class="sec alt">
+        <h2 class="reveal">News &amp; Updates</h2>
+        <p class="lead reveal">
+          The latest releases, announcements and conversations, straight from
+          the artist's team.
+        </p>
+        <div class="cards">
+          <article class="card reveal">
+            <time>Date</time>
+            <h3>New Release Announced</h3>
+            <p>
+              Share the title, release date and the story behind the new music,
+              and where fans can hear it first.
+            </p>
+          </article>
+          <article class="card reveal">
+            <time>Date</time>
+            <h3>In Conversation</h3>
+            <p>
+              A candid look at the creative process, the inspirations and the
+              road ahead. Link the full interview here.
+            </p>
+          </article>
+          <article class="card reveal">
+            <time>Date</time>
+            <h3>Tour &amp; Special Announcement</h3>
+            <p>
+              Dates, special guests and anything else the artist is excited to
+              share with their audience.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="events" class="sec">
+        <h2 class="reveal">Events</h2>
+        <p class="lead reveal">
+          Join the artist live. See what is coming up, revisit past nights, and
+          enquire about booking.
+        </p>
+        <ul class="events">
+          <li class="reveal">
+            <time>Date</time>
+            <div>
+              <h3>Upcoming performance</h3>
+              <p>
+                Venue name, City. Doors, tickets and booking details to be
+                added.
+              </p>
+            </div>
+            <a href="#contact" class="btn sm">Booking</a>
+          </li>
+          <li class="reveal">
+            <time>Date</time>
+            <div>
+              <h3>Upcoming performance</h3>
+              <p>
+                Venue name, City. Doors, tickets and booking details to be
+                added.
+              </p>
+            </div>
+            <a href="#contact" class="btn sm">Booking</a>
+          </li>
+          <li class="reveal past">
+            <time>Date</time>
+            <div>
+              <h3>Past performance</h3>
+              <p>Venue name, City. A night to remember.</p>
+            </div>
+            <span>Past</span>
+          </li>
+        </ul>
+      </section>
+
+      <section id="contact" class="sec alt">
+        <h2 class="reveal">Contact</h2>
+        <p class="lead reveal">
+          For bookings, press, collaborations or a kind word, please get in
+          touch. Every message is read.
+        </p>
+        <div class="split">
+          <form id="form" class="reveal" novalidate>
+            <label
+              >Name<input
+                name="name"
+                required
+                autocomplete="name" /><small></small
+            ></label>
+            <label
+              >Email<input
+                name="email"
+                type="email"
+                required
+                autocomplete="email" /><small></small
+            ></label>
+            <label
+              >Subject<input name="subject" required /><small></small
+            ></label>
+            <label
+              >Message<textarea name="message" rows="5" required></textarea
+              ><small></small
+            ></label>
+            <button class="btn" type="submit">Send message</button>
+            <p id="status" role="status"></p>
+          </form>
+          <div class="reveal">
+            <p>
+              For booking enquiries, including festivals, private events and
+              collaborations, write to
+              <a class="link" href="mailto:booking@example.com"
+                >booking@example.com</a
+              >
+            </p>
+            <p>
+              Management and press: [name and contact details]. We aim to
+              respond within [timeframe].
+            </p>
+            <p class="social">
+              <a href="#">Instagram</a><a href="#">YouTube</a
+              ><a href="#">Spotify</a><a href="#">X</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a href="#home" class="brand">Emma Ogois</a>
+      <nav aria-label="Footer">
+        <a href="#about">About</a><a href="#music">Music</a
+        ><a href="#events">Events</a><a href="#contact">Contact</a>
+      </nav>
+      <p class="social">
+        <a href="#">Instagram</a><a href="#">YouTube</a><a href="#">Spotify</a>
+      </p>
+      <p>&copy; <span id="yr"></span> Emma Ogois. All rights reserved.</p>
+    </footer>
+
+    <button id="top" aria-label="Back to top">&uarr;</button>
+
+    <div
+      id="lb"
+      class="lb"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image viewer"
+      hidden
+    >
+      <button class="x" aria-label="Close">&times;</button>
+      <button class="p" aria-label="Previous image">&#10094;</button>
+      <figure>
+        <img alt="" />
+        <figcaption></figcaption>
+      </figure>
+      <button class="n" aria-label="Next image">&#10095;</button>
+    </div>
+    <script>
+      "use strict";
+      document.documentElement.classList.add("js"); // reveal-hiding only applies when JS runs
+      const $ = (s, c = document) => c.querySelector(s);
+      const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+
+      /* ---- Placeholder images (replace by setting src on any <img data-ph>) ---- */
+      const ph = (label) =>
+        "data:image/svg+xml," +
+        encodeURIComponent(
+          `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000"><rect width="100%" height="100%" fill="#3B2117"/><text x="50%" y="50%" fill="#C6A477" font-family="Georgia" font-size="42" text-anchor="middle">${label}</text></svg>`,
+        );
+      $$("img[data-ph]").forEach((i) => {
+        if (!i.getAttribute("src")) i.src = ph(i.dataset.ph);
+      });
+
+      /* ---- Mobile menu ---- */
+      const burger = $(".burger"),
+        menu = $("#menu");
+      const setMenu = (open) => {
+        menu.classList.toggle("open", open);
+        burger.setAttribute("aria-expanded", open);
+      };
+      burger.addEventListener("click", () =>
+        setMenu(!menu.classList.contains("open")),
+      );
+      $$("a", menu).forEach((a) =>
+        a.addEventListener("click", () => setMenu(false)),
+      );
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") setMenu(false);
+      });
+
+      /* ---- Sticky nav, back-to-top ---- */
+      const nav = $("#nav"),
+        toTop = $("#top");
+      const onScroll = () => {
+        nav.classList.toggle("stuck", scrollY > 40);
+        toTop.classList.toggle("show", scrollY > 600);
+      };
+      addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+      toTop.addEventListener("click", () => scrollTo({ top: 0 }));
+
+      /* ---- Scroll reveal + active link ---- */
+      const io = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          }),
+        { threshold: 0.12 },
+      );
+      $$(".reveal").forEach((el) => io.observe(el));
+
+      const links = $$("#menu a");
+      const spy = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting)
+              links.forEach((a) =>
+                a.classList.toggle("active", a.hash === "#" + e.target.id),
+              );
+          }),
+        { rootMargin: "-45% 0px -50% 0px" },
+      );
+      $$("main section[id]").forEach((s) => spy.observe(s));
+
+      /* ---- Lightbox ---- */
+      const lb = $("#lb"),
+        lbImg = $("img", lb),
+        lbCap = $("figcaption", lb);
+      const shots = $$("#grid button");
+      let cur = 0,
+        opener = null;
+      const show = (i) => {
+        cur = (i + shots.length) % shots.length;
+        const im = $("img", shots[cur]);
+        lbImg.src = im.src;
+        lbImg.alt = im.alt;
+        lbCap.textContent = shots[cur].dataset.cap;
+      };
+      const closeLb = () => {
+        lb.hidden = true;
+        document.body.style.overflow = "";
+        opener && opener.focus();
+      };
+      shots.forEach((b, i) =>
+        b.addEventListener("click", () => {
+          opener = b;
+          show(i);
+          lb.hidden = false;
+          document.body.style.overflow = "hidden";
+          $(".x", lb).focus();
+        }),
+      );
+      $(".p", lb).addEventListener("click", () => show(cur - 1));
+      $(".n", lb).addEventListener("click", () => show(cur + 1));
+      $(".x", lb).addEventListener("click", closeLb);
+      lb.addEventListener("click", (e) => {
+        if (e.target === lb) closeLb();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (lb.hidden) return;
+        if (e.key === "Escape") closeLb();
+        if (e.key === "ArrowLeft") show(cur - 1);
+        if (e.key === "ArrowRight") show(cur + 1);
+      });
+
+      /* ---- Timeline accordion ---- */
+      $$(".timeline button").forEach((b) =>
+        b.addEventListener("click", () => {
+          const li = b.parentElement,
+            open = li.classList.toggle("open");
+          b.setAttribute("aria-expanded", open);
+        }),
+      );
+
+      /* ---- YouTube (loaded on click; set data-yt to a video ID) ---- */
+      $$(".vid").forEach((v) =>
+        $("button", v).addEventListener("click", () => {
+          const id = v.dataset.yt;
+          if (!id) {
+            $("button", v).textContent = "Add a YouTube video ID";
+            return;
+          }
+          v.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1" title="${v.dataset.title}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+        }),
+      );
+
+      /* ---- Audio player: add { title, src } objects when audio files exist ---- */
+      const TRACKS = []; // e.g. { title: 'Song Title', src: 'audio/song.mp3' }
+      const audio = $("#audio"),
+        playBtn = $("#play"),
+        seek = $("#seek"),
+        ptitle = $("#ptitle"),
+        ptime = $("#ptime");
+      let t = 0;
+      const fmt = (s) =>
+        `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+      const load = (i) => {
+        if (!TRACKS.length) return;
+        t = (i + TRACKS.length) % TRACKS.length;
+        audio.src = TRACKS[t].src;
+        ptitle.textContent = TRACKS[t].title;
+      };
+      const toggle = () => {
+        if (!TRACKS.length) {
+          ptitle.textContent = "Add audio files in script.js";
+          return;
+        }
+        if (!audio.src) load(0);
+        audio.paused ? audio.play() : audio.pause();
+      };
+      playBtn.addEventListener("click", toggle);
+      $("#prev").addEventListener("click", () => {
+        if (TRACKS.length) {
+          load(t - 1);
+          audio.play();
+        }
+      });
+      $("#next").addEventListener("click", () => {
+        if (TRACKS.length) {
+          load(t + 1);
+          audio.play();
+        }
+      });
+      audio.addEventListener("play", () => {
+        playBtn.innerHTML = "&#10074;&#10074;";
+        playBtn.setAttribute("aria-label", "Pause");
+      });
+      audio.addEventListener("pause", () => {
+        playBtn.innerHTML = "&#9654;";
+        playBtn.setAttribute("aria-label", "Play");
+      });
+      audio.addEventListener("ended", () => {
+        load(t + 1);
+        audio.play();
+      });
+      audio.addEventListener("timeupdate", () => {
+        seek.value = audio.duration
+          ? (audio.currentTime / audio.duration) * 100
+          : 0;
+        ptime.textContent = fmt(audio.currentTime);
+      });
+      seek.addEventListener("input", () => {
+        if (audio.duration)
+          audio.currentTime = (seek.value / 100) * audio.duration;
+      });
+
+      /* ---- Contact form validation ---- */
+      const form = $("#form");
+      const check = (f) => {
+        const v = f.value.trim();
+        let m = "";
+        if (!v) m = "This field is required.";
+        else if (f.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v))
+          m = "Enter a valid email.";
+        else if (f.name === "message" && v.length < 10)
+          m = "Please write at least 10 characters.";
+        f.nextElementSibling.textContent = m;
+        f.setAttribute("aria-invalid", !!m);
+        return !m;
+      };
+      $$("input,textarea", form).forEach((f) =>
+        f.addEventListener("blur", () => check(f)),
+      );
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const ok = $$("input,textarea", form).map(check).every(Boolean);
+        $("#status").textContent = ok
+          ? "Thank you. Connect this form to your email service to receive messages."
+          : "Please correct the highlighted fields.";
+        if (ok) form.reset();
+      });
+
+      $("#yr").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
